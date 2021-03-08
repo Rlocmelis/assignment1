@@ -1,0 +1,12 @@
+.env failā ierakstīt: 
+INITIAL_ADMIN_NAME="admin"
+INITIAL_ADMIN_PASSWORD="parole123"
+INITIAL_ADMIN_EMAIL="admin@esynergy.lv"
+INITIAL_USER_NAME="user"
+INITIAL_USER_PASSWORD="parole123"
+INITIAL_USER_EMAIL="user@esynergy.lv"
+lai izveidotu pirmos 2 lietotājus - 1 admin, 1 user
+un config/database.php failā pie 'strict' nosacījumu izmainīt uz 'false'
+
+php artisan migrate
+php artisan db:seed
