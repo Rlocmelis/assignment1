@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Route::get('api/v1/jsonResponse', "ProductAuditController@jsonResponse");
+
+Route::get('audits', [\App\Http\Controllers\AuditController::class, 'index']);
+
+Route::get('audits/{id}', [\App\Http\Controllers\AuditController::class, 'show']);
+
+Route::get('/v1/jsonResponse', [\App\Http\Controllers\ProductAuditController::class, 'jsonResponse']);

@@ -4,19 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class ProductController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('can:crud_table')->except('index');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         $products = Product::all();
 
-        return view('products.index', compact('products'));
+        return view('products.index',compact('products'));
     }
 
     /**
@@ -30,6 +38,7 @@ class ProductController extends Controller
         return view('products.create');
 
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -99,6 +108,7 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('products.index');
     }
+
 
     public function validateProduct(): array
     {

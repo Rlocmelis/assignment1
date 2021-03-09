@@ -116,6 +116,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/global-state" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/lines-of-code" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/ui" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/owen-it/laravel-auditing" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

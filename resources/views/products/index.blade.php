@@ -22,6 +22,7 @@
                     <div>
                         <div class="control">
                             <a href="{{ route('products.create') }}" class="align-items-center text-danger">Create</a>
+                            <a href="{{ route('products.audits.index') }}" class="align-items-center text-danger">All Audits</a>
                         </div>
                     </div>
                     @endcan
@@ -40,9 +41,10 @@
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->quantity }}</td>
                                     <td>{{ $product->price }}</td>
-                                    <td>0</td>
+                                   <td>{{ $product->VAT($product) }}</td>
                                     @can('crud_table')
                                     <td><a href="products/{{$product->id}}/edit">Edit</a></td>
+
                                     <td>
                                         <form action="{{ url('/products', ['id' => $product->id]) }}" method="post">
                                             <input class="btn btn-default" type="submit" value="Delete" />
@@ -50,6 +52,7 @@
                                             @csrf
                                         </form>
                                     </td>
+                                        <td><a href="products/{{$product->id}}/audit">See Audits</a></td>
                                         @endcan
                                 </tr>
                             @endforeach

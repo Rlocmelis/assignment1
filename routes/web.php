@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\ProductAuditController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,26 +22,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Route::get('products/audits', [ProductAuditController::class, 'index'])->middleware('can:crud_table')->name('products.audits.index');
+
+Route::get('products/{product}/audit', [ProductAuditController::class, 'show'])->middleware('can:crud_table')->name('products.audits.show');
+Route::get('products/audits', [ProductAuditController::class, 'index'])->middleware('can:crud_table')->name('products.audits.index');
+
+
 Route::resource('products', ProductController::class)->middleware('auth');
-//Route::get('products', [ProductController::class, 'index']);
 
-//This
-
-/*Route::middleware('can:crud_table')->group(function(){
-    Route::get('/products/create', [ProductController::class, 'create'])->middleware('can:crud_table');
-
-    Route::post('/products/{product}/create', [ProductController::class, 'store']);
-    Route::delete('/products/{product}/destroy', [ProductController::class, 'destroy']);
-
-    Route::get(
-        '/products/{product}/edit',
-        'ProfilesController@edit'
-    )->middleware('can:crud_table');
-
-    Route::patch(
-        '/products/{product}',
-        'ProfilesController@update'
-    )->middleware('can:crud_table');
-
-});
-Route::get('products', [ProductController::class, 'index']); */
