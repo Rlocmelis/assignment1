@@ -7,6 +7,10 @@ use App\Models\Product;
 
 class ProductAuditController extends Controller
 {
+    public function __construct(){
+        $this->middleware('can:crud_table')->except('index');
+    }
+
     public function index()
     {
         $audits = Product::find(2)->audits;
